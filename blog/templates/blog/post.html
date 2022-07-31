@@ -1,0 +1,100 @@
+{% extends 'blog/basic.html' %}
+
+{% block title %} Blog {% endblock %}
+
+{% block css %}
+{% endblock %}
+
+{% block body %}
+{% load static %}
+<body class="text-light" style="background-image:linear-gradient(to right,grey,black)">
+<!--Section: Contact v.2-->
+<div class="container">
+<section class="mb-4">
+
+    <!--Section heading-->
+    
+    <h2 class="h1-responsive font-weight-bold my-4"><i class="bi bi-basket-fill"> Shop Buddy</i><hr><i><h3 class="h1-responsive my-4">Write your Blog</h3></i></h2>
+    <div class="row">
+
+        <!--Grid column-->
+        <div class="col-md-8 mb-md-0 mb-5 ">
+            <form action="/blog/post/" method="POST">{% csrf_token %}
+
+                <!--Grid row-->
+                <div class="row">
+
+                    <!--Grid column-->
+                    <div class="col-md-6 my-3">
+                        <div class="md-form mb-0">
+                            <label for="name" class="">First name</label>
+                            <input type="text" id="firstname" maxlength="20" name="firstname" class="form-control" placeholder="First Name" Required>
+                        </div>
+                    </div>
+                    <!--Grid column-->
+
+                    <!--Grid column-->
+                    <div class="col-md-6 my-3">
+                        <div class="md-form mb-0">
+                             <label for="phone" class="">Last Name</label>
+                            <input type="text" id="lastname" maxlength="20" name="lastname" placeholder="Last Name" class="form-control">
+                        </div>
+                    </div>
+                    <!--Grid column-->
+
+                </div>
+                <!--Grid row-->
+
+                <!--Grid row-->
+                <div class="row">
+                    <div class="col-md-12 my-3">
+                        <div class="md-form mb-0">
+                            <label for="email" class="">Email</label>
+                            <input type="email" id="email" name="email" placeholder="Email" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <!--Grid row-->
+
+                <!--Grid row-->
+                <div class="row">
+
+                    <!--Grid column-->
+                    <div class="col-md-12 my-3">
+
+                        <div class="md-form">
+                            <label for="message">Your message</label>
+                            <textarea id="message" name="message" rows="5" class="form-control md-textarea" placeholder="Write your message here..." Required></textarea>
+                        </div>
+
+                    </div>
+                </div>
+                <!--Grid row-->
+                <button id="submit" name="submit" class="btn btn-primary submit">Submit</button>
+            </form>
+
+
+            <div class="status"></div>
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-md-3">
+            <img src = "https://www.renaultgroup.com/wp-content/uploads/2021/03/nouveau_logo_renault_banner.jpg" width="400px" height="400px">
+        </div>
+        <!--Grid column-->
+    </div>
+
+</section>
+</div>
+<!--Section: Contact v.2-->
+</body>
+{% endblock %}
+{% block js %}
+<script>
+{% if thank %}
+alert('Thank you for writing the post . You can view your blog in our blog page !!!');
+document.location = "/blog/";
+{% endif %}
+</script>
+{% endblock %}
